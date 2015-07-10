@@ -27,7 +27,7 @@ var usage = cli.getUsage({
 var print = function (fill) {
 //    var strOut = fill.toString();
     console.log(fill);
-    shell.exec("echo 'ech'o: " + fill + " works");
+//    shell.exec("echo 'ech'o: " + fill + " works");
 };
 var printHelp = function () {
     console.log(usage);
