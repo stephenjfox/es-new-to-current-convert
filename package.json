@@ -1,6 +1,6 @@
 {
     "name": "ecma-converter",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "converts highest version of ECMA Script to current popular implementation through babel.",
     "main": "index.js",
     "scripts": {
