@@ -39,25 +39,31 @@ var printHelp = function () {
 //printHelp();
 
 var output_folder = options.out ? options.out : "./babel-es5-src"; 
+var verbose = options.verbose ? true : false;
 
 if (options.help) {
     printHelp();
 } else {
     fs.mkdir(output_folder, function (err) {
-	console.error(err);
+	if (verbose) console.error(err);
     });
-    print(options);
+    if (verbose)
+	print(options);
+    
     if (options.folder) {
 	shell.exec("babel -d " + output_folder + " " + options.folder);
-    } else if (options.files) {
+    }
+    else if (options.files) {
 	options.files.forEach(function(f) {
-	    console.log("Current file: " + f);
+	    if (verbose)
+		console.log("Current file: " + f);
 	    babel.transformFile(f, function (err, result) {
 		if (err) {
 		    return console.error(err);
 		} else {
-		    console.log("WE HAVE A RESULT");
-		    //console.log(result);'
+		    if (verbose)
+			console.log("WE HAVE A RESULT");
+
 		    var newFilePath = output_folder + "/" + f;
 		    var newFile = fs.open(output_folder + "/" + f,'w',
 			function (err, descriptor) {
